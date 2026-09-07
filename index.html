@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kai's Mind</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#0f1117',
+                        cardbg: '#181b24',
+                        cardhover: '#1f2430',
+                        accent: '#6366f1',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar and smooth aesthetics */
+        body {
+            background-color: #0f1117;
+            color: #f3f4f6;
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        .bento-card {
+            background-color: #181b24;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .bento-card:hover {
+            background-color: #1f2430;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
+
+    <!-- Top Navigation / Header -->
+    <header class="w-full max-w-6xl mx-auto px-6 py-8 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <div class="w-3 h-3 rounded-full bg-indigo-500 animate-pulse"></div>
+            <span class="font-medium tracking-tight text-lg text-white">Kai's Mind</span>
+        </div>
+        <div class="flex items-center space-x-4 text-sm text-gray-400">
+            <span class="hidden sm:inline">Digital Garden & Lab</span>
+            <span class="inline-block px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 text-xs font-medium">v1.0.4</span>
+        </div>
+    </header>
+
+    <!-- Main Bento Grid Container -->
+    <main class="w-full max-w-6xl mx-auto px-6 pb-12 flex-grow">
+        
+        <!-- Hero / Intro Bento Box -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-5">
+            <div class="bento-card md:col-span-2 rounded-3xl p-8 flex flex-col justify-between border border-gray-800 relative overflow-hidden group">
+                <div class="absolute -right-16 -top-16 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl group-hover:bg-indigo-500/20 transition-all duration-500"></div>
+                <div>
+                    <span class="text-xs font-semibold tracking-wider text-indigo-400 uppercase">Welcome</span>
+                    <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-white mt-2 mb-4">Exploring concepts, tools, & interactive ideas.</h1>
+                    <p class="text-gray-400 max-w-xl text-sm md:text-base leading-relaxed">
+                        A minimal digital workspace sandbox. A collection of experimental app ideas, prototypes, and creative coding fragments built on the fly.
+                    </p>
+                </div>
+                <div class="flex items-center space-x-4 mt-8">
+                    <button onclick="triggerPulse()" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium transition-colors shadow-lg shadow-indigo-600/20">
+                        Explore Ideas
+                    </button>
+                    <span id="interaction-counter" class="text-xs text-gray-500 font-mono">Interactions: 0</span>
+                </div>
+            </div>
+
+            <!-- Quick Status Box -->
+            <div class="bento-card rounded-3xl p-8 flex flex-col justify-between border border-gray-800">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-semibold tracking-wider text-gray-400 uppercase">System Status</span>
+                        <span class="flex h-2 w-2 relative">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        </span>
+                    </div>
+                    <h2 class="text-xl font-semibold text-white mb-2">Active Sandbox</h2>
+                    <p class="text-gray-400 text-sm">All local containers and client-side modules running smoothly.</p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-gray-800/60 flex justify-between items-center text-xs text-gray-500 font-mono">
+                    <span>ENV: Production</span>
+                    <span id="live-clock">--:--:--</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project / App Ideas Bento Grid -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            
+            <!-- App Idea 1 -->
+            <div class="bento-card rounded-3xl p-6 flex flex-col justify-between border border-gray-800 group">
+                <div>
+                    <div class="h-44 rounded-2xl overflow-hidden mb-5 bg-gray-900 relative">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" alt="Abstract Visualizer" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#181b24] via-transparent to-transparent opacity-60"></div>
+                        <span class="absolute bottom-3 left-3 px-2.5 py-1 rounded-lg bg-black/50 backdrop-blur-md text-[10px] font-medium text-indigo-300 border border-white/10">Audio / UI</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-indigo-400 transition-colors">StreamSync Deck</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        A dual-deck audio track synchronizer interface designed for quick cue points and seamless hardware workflow simulation.
+                    </p>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-gray-800/60 text-xs">
+                    <span class="text-gray-500 font-mono">Prototype #01</span>
+                    <button onclick="launchApp('StreamSync Deck')" class="text-indigo-400 hover:text-indigo-300 font-medium flex items-center space-x-1">
+                        <span>Launch</span>
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- App Idea 2 -->
+            <div class="bento-card rounded-3xl p-6 flex flex-col justify-between border border-gray-800 group">
+                <div>
+                    <div class="h-44 rounded-2xl overflow-hidden mb-5 bg-gray-900 relative">
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop" alt="Retro Grid" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#181b24] via-transparent to-transparent opacity-60"></div>
+                        <span class="absolute bottom-3 left-3 px-2.5 py-1 rounded-lg bg-black/50 backdrop-blur-md text-[10px] font-medium text-indigo-300 border border-white/10">Game / Tool</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-indigo-400 transition-colors">Console Keymapper</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        Advanced configuration helper for script bindings, toggle commands, and custom analog-to-digital layout mappings.
+                    </p>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-gray-800/60 text-xs">
+                    <span class="text-gray-500 font-mono">Prototype #02</span>
+                    <button onclick="launchApp('Console Keymapper')" class="text-indigo-400 hover:text-indigo-300 font-medium flex items-center space-x-1">
+                        <span>Launch</span>
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- App Idea 3 -->
+            <div class="bento-card rounded-3xl p-6 flex flex-col justify-between border border-gray-800 group">
+                <div>
+                    <div class="h-44 rounded-2xl overflow-hidden mb-5 bg-gray-900 relative">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop" alt="Code Sandbox" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#181b24] via-transparent to-transparent opacity-60"></div>
+                        <span class="absolute bottom-3 left-3 px-2.5 py-1 rounded-lg bg-black/50 backdrop-blur-md text-[10px] font-medium text-indigo-300 border border-white/10">Utility</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-indigo-400 transition-colors">Mystery Screening Tool</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        A minimal video file title stripper and playlist organizer designed specifically for spoiler-free group movie nights.
+                    </p>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-gray-800/60 text-xs">
+                    <span class="text-gray-500 font-mono">Prototype #03</span>
+                    <button onclick="launchApp('Mystery Screening Tool')" class="text-indigo-400 hover:text-indigo-300 font-medium flex items-center space-x-1">
+                        <span>Launch</span>
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full max-w-6xl mx-auto px-6 py-8 border-t border-gray-800/60 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500">
+        <p>&copy; 2026 Kai's Mind. Built with vanilla code & Tailwind CSS.</p>
+        <div class="flex space-x-6 mt-4 sm:mt-0">
+            <span class="hover:text-gray-400 cursor-pointer">Privacy</span>
+            <span class="hover:text-gray-400 cursor-pointer">Source</span>
+            <span class="hover:text-gray-400 cursor-pointer">Terminal</span>
+        </div>
+    </footer>
+
+    <!-- Interactive Vanilla JS Script -->
+    <script>
+        // Live Clock Updater
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            const clockEl = document.getElementById('live-clock');
+            if (clockEl) {
+                clockEl.textContent = timeString;
+            }
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Interaction Counter Logic
+        let interactionCount = 0;
+        const counterEl = document.getElementById('interaction-counter');
+
+        function triggerPulse() {
+            interactionCount++;
+            counterEl.textContent = `Interactions: ${interactionCount}`;
+            
+            // Subtle visual feedback toast or alert effect
+            const btn = event.currentTarget;
+            btn.classList.add('scale-95');
+            setTimeout(() => btn.classList.remove('scale-95'), 150);
+        }
+
+        function launchApp(appName) {
+            interactionCount++;
+            counterEl.textContent = `Interactions: ${interactionCount}`;
+            alert(`Initializing prototype sandbox for: "${appName}"...\n(Ready for custom logic integration)`);
+        }
+    </script>
+</body>
+</html>
